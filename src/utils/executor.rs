@@ -11,6 +11,7 @@ pub struct ExecutionResult {
 }
 
 pub fn execute_with_input(command_str: &str, input: &str, _timeout_secs: u64) -> Result<ExecutionResult> {
+    // TODO: Implement timeout functionality using wait_timeout or similar
     let start = std::time::Instant::now();
     
     // Parse command string

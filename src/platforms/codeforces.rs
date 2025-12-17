@@ -41,16 +41,13 @@ impl Downloadable for Codeforces {
         
         let inputs: Vec<String> = document.select(&input_selector)
             .map(|el| {
-                // Remove the first line (usually contains "Input" or similar)
-                let text = el.text().collect::<Vec<_>>().join("");
-                text.lines().skip(0).collect::<Vec<_>>().join("\n")
+                el.text().collect::<Vec<_>>().join("")
             })
             .collect();
         
         let outputs: Vec<String> = document.select(&output_selector)
             .map(|el| {
-                let text = el.text().collect::<Vec<_>>().join("");
-                text.lines().skip(0).collect::<Vec<_>>().join("\n")
+                el.text().collect::<Vec<_>>().join("")
             })
             .collect();
         
