@@ -111,3 +111,23 @@ fn normalize_output(s: &str) -> String {
         .trim()
         .to_string()
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_normalize_output() {
+        assert_eq!(normalize_output("hello\n"), "hello");
+        assert_eq!(normalize_output("hello  \n"), "hello");
+        assert_eq!(normalize_output("hello\nworld\n"), "hello\nworld");
+        assert_eq!(normalize_output("  hello  \n  world  \n"), "hello\n  world");
+    }
+
+    #[test]
+    fn test_extract_test_number() {
+        assert_eq!(extract_test_number("test/sample-1.in"), "1");
+        assert_eq!(extract_test_number("test/sample-10.in"), "10");
+        assert_eq!(extract_test_number("sample-2.in"), "2");
+    }
+}
